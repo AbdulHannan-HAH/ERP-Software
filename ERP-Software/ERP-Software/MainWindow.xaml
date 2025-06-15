@@ -7,6 +7,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <TextBlock Margin="223,182,165,132" FontSize="32px">Hello, Welcome to ERP</TextBlock>
     </Grid>
 </Window>
