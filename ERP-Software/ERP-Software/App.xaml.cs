@@ -9,6 +9,7 @@ namespace ERP_Software
     /// </summary>
     public partial class App : Application
     {
+
     }
 
 }
