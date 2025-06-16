@@ -65,6 +65,37 @@ namespace ERP_Software.DL
             }
             return users;
         }
+        public static User GetUserByUsername(string username)
+        {
+            User user = null;
+
+            using (SqlConnection con = new SqlConnection(conStr))
+            {
+                string query = @"SELECT u.user_id, u.username, u.email, u.password_hash, r.role 
+                                 FROM Users u
+                                 JOIN userRoles r ON u.role_id = r.role_id
+                                 WHERE u.username = @Username";
+
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@Username", username);
+
+                con.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    user = new User
+                    {
+                        UserID = (int)reader["user_id"],
+                        Username = reader["username"].ToString(),
+                        Email = reader["email"].ToString(),
+                        PasswordHash = reader["password_hash"].ToString(),
+                        RoleName = reader["role"].ToString()
+                    };
+                }
+            }
+
+            return user;
+        }
 
 
         public static void DeleteUser(int userId)

@@ -8,5 +8,6 @@ namespace ERP_Software.DL
 {
     class StoreDL
     {
+
     }
 }

@@ -44,9 +44,9 @@ namespace ERP_Software.UI
                 MessageBox.Show($"Welcome {user.Username}! Role: {user.RoleName}");
 
                 // Navigate to respective dashboard
-                if (user.RoleName == "Admin")
+                if (user.RoleName == "superadmin")
                 {
-                    //new AdminDashboard(user).Show(); // Pass user if needed
+                   new AdminPanel().Show(); 
                 }
                 else if (user.RoleName == "Coach")
                 {
