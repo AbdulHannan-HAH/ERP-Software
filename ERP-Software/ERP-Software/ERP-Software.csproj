@@ -9,4 +9,10 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="BL\" />
+    <Folder Include="DL\" />
+    <Folder Include="Resources\" />
+  </ItemGroup>
+
 </Project>
