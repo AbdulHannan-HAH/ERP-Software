@@ -10,9 +10,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="BL\" />
-    <Folder Include="DL\" />
-    <Folder Include="Resources\" />
+    <None Remove="Resources\logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="test\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\logo.png" />
   </ItemGroup>
 
 </Project>
