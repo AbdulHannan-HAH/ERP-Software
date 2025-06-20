@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ERP_Software.DL
+namespace ERP_Software.Models
 {
-    class StoreDL
+    class Roles
     {
-
+        public int RoleID { get; set; }
+        public string RoleName { get; set; }
     }
 }
