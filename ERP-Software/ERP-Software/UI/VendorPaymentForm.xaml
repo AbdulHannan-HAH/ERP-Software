@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="ERP_Software.UI.VendorPaymentForm"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="600"
+             Background="White">
+    <Grid Margin="20">
+        <StackPanel>
+            <TextBlock Text="Vendor Payment" FontSize="24" FontWeight="Bold"
+                       Foreground="DarkGreen" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <Label Content="Vendor:" Width="80"/>
+                <ComboBox x:Name="cmbVendors" Width="200" DisplayMemberPath="VendorName"
+                          SelectedValuePath="VendorID" SelectionChanged="cmbVendors_SelectionChanged"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <Label Content="Invoice:" Width="80"/>
+                <ComboBox x:Name="cmbInvoices" Width="200" DisplayMemberPath="InvoiceNumber"
+                          SelectedValuePath="InvoiceID"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <Label Content="Amount:" Width="80"/>
+                <TextBox x:Name="txtAmount" Width="200" IsReadOnly="True"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <Label Content="Method:" Width="80"/>
+                <ComboBox x:Name="cmbMethod" Width="200">
+                    <ComboBoxItem Content="Cash"/>
+                    <ComboBoxItem Content="Bank Transfer"/>
+                    <ComboBoxItem Content="Cheque"/>
+                </ComboBox>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <Label Content="Date:" Width="80"/>
+                <DatePicker x:Name="dpPaymentDate" Width="200"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <Label Content="Remarks:" Width="80"/>
+                <TextBox x:Name="txtRemarks" Width="400"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0" HorizontalAlignment="Center">
+                <Button Content="Make Payment" Width="150" Click="btnMakePayment_Click" 
+                        Background="#28a745" Foreground="White"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

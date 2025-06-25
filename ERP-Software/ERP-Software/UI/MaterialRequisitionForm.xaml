@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="ERP_Software.UI.MaterialRequisitionForm"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="600">
+    <Grid Margin="10">
+        <StackPanel>
+            <Label Content="Requested By"/>
+            <TextBox x:Name="txtRequestedBy" Margin="0,5"/>
+
+            <Label Content="Cost Center"/>
+            <ComboBox x:Name="cmbCostCenter" DisplayMemberPath="Name" SelectedValuePath="CostCenterID" Margin="0,5"/>
+
+            <Label Content="Remarks"/>
+            <TextBox x:Name="txtRemarks" Height="50" Margin="0,5" TextWrapping="Wrap" AcceptsReturn="True"/>
+
+            <Button Content="Add Item" Click="AddItem_Click" Margin="0,5"/>
+
+            <DataGrid x:Name="dgItems" AutoGenerateColumns="False" Height="200" Margin="0,5">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Item ID" Binding="{Binding ItemID}"/>
+                    <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <Button Content="Submit Requisition" Click="Submit_Click" Margin="0,10"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

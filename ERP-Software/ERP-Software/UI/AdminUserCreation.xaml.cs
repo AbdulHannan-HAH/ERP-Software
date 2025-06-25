@@ -19,7 +19,7 @@ namespace ERP_Software.UI
     /// <summary>
     /// Interaction logic for AdminUserCreation.xaml
     /// </summary>
-    public partial class AdminUserCreation : Window
+    public partial class AdminUserCreation : UserControl
     {
         private int selectedUserId = -1;
 
@@ -46,7 +46,7 @@ namespace ERP_Software.UI
                 return;
             }
 
-            string createdBy = "Admin"; // Or get current user name dynamically
+            string createdBy = "Admin"; 
             string message = UserBL.CreateAdminUser(username, email, roleId, createdBy);
             MessageBox.Show(message);
 

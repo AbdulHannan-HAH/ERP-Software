@@ -19,7 +19,7 @@ namespace ERP_Software.UI
     /// <summary>
     /// Interaction logic for UserRoles.xaml
     /// </summary>
-    public partial class UserRoles : Window
+    public partial class UserRoles : UserControl
     {
         private int selectedRoleId = -1;
         public UserRoles()
