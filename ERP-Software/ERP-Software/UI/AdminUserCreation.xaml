@@ -1,0 +1,116 @@
+﻿<UserControl x:Class="ERP_Software.UI.AdminUserCreation"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             FontFamily="Segoe UI">
+
+    <UserControl.Resources>
+        <!-- Global Button Style -->
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#007BFF"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="10,6"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="8"
+                                BorderBrush="{TemplateBinding BorderBrush}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- TextBlock Placeholder Style -->
+        <Style TargetType="TextBlock" x:Key="PlaceholderStyle">
+            <Setter Property="Foreground" Value="#888"/>
+            <Setter Property="FontStyle" Value="Italic"/>
+            <Setter Property="FontSize" Value="12"/>
+        </Style>
+
+        <!-- DataGrid Styling -->
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="#007BFF"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+        <Style TargetType="DataGridCell">
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Padding" Value="4"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid Margin="10">
+        <StackPanel>
+            <TextBlock Text="Create New User" FontWeight="Bold" FontSize="18" Foreground="#f45d01" Margin="0,0,0,10"/>
+
+            <!-- Input Row -->
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <!-- Username -->
+                <Grid Width="150" Margin="0,0,10,0">
+                    <TextBox x:Name="txtUsername" TextChanged="txtUsername_TextChanged"/>
+                    <TextBlock x:Name="txtUsernamePlaceholder" Text="Username"
+                               Style="{StaticResource PlaceholderStyle}"
+                               Margin="5,2,0,0" IsHitTestVisible="False" VerticalAlignment="Top"/>
+                </Grid>
+
+                <!-- Email -->
+                <Grid Width="200" Margin="0,0,10,0">
+                    <TextBox x:Name="txtEmail" TextChanged="txtEmail_TextChanged"/>
+                    <TextBlock x:Name="txtEmailPlaceholder" Text="Email"
+                               Style="{StaticResource PlaceholderStyle}"
+                               Margin="5,2,0,0" IsHitTestVisible="False" VerticalAlignment="Top"/>
+                </Grid>
+
+                <!-- Role -->
+                <ComboBox x:Name="cmbRoles" Width="150" DisplayMemberPath="RoleName" SelectedValuePath="RoleID" Margin="0,0,10,0"/>
+
+                <!-- Create Button -->
+                <Button Content="Create" Width="100" Height="30" Click="btnCreate_Click" Background="#f45d01 " Margin="0,0,10,0"/>
+
+            </StackPanel>
+
+            <!-- Password Section -->
+            <TextBlock Text="Updated Password" FontWeight="Bold" FontSize="18" Margin="0,0,0,5" Foreground="#f45d01"/>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <PasswordBox x:Name="txtNewPassword" Width="200" Height="30" Margin="0,0,10,0"/>
+                <Button Content="Update Password" Click="btnUpdatePassword_Click" Width="150"/>
+            </StackPanel>
+
+            <!-- User List -->
+            <DataGrid x:Name="dgUsers" AutoGenerateColumns="False" Height="300" Margin="0,0,0,10" SelectionChanged="dgUsers_SelectionChanged" HeadersVisibility="Column">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding UserID}" Width="50"/>
+                    <DataGridTextColumn Header="Username" Binding="{Binding Username}" Width="*"/>
+                    <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="*"/>
+                    <DataGridTextColumn Header="Role" Binding="{Binding RoleName}" Width="*"/>
+                    <DataGridTemplateColumn Header="Actions" Width="100">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Delete"
+                                        Click="btnDelete_Click"
+                                        Background="#d9534f"
+                                        Foreground="White"
+                                        Padding="6,3"
+                                        FontWeight="Bold"
+                                        FontSize="13"
+                                        Width="70"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <!-- Extra Delete Button Below -->
+            <Button Content="Delete Selected User" Click="btnDelete_Click" Width="200" Background="#d9534f" HorizontalAlignment="Left"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
